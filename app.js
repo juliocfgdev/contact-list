@@ -50,6 +50,12 @@ UI.prototype.showAlert = function (message, className) {
     }, 2000);
 };
 
+// Delete Book
+UI.prototype.deleteContact = function (target) {
+    if (target.className === 'delete') {
+        target.parentElement.parentElement.remove();
+    }
+};
 // Clear Fields
 UI.prototype.clearFields = function () {
     document.getElementById('name').value = '';
@@ -74,7 +80,7 @@ document.getElementById('contact-form').addEventListener('submit',
         // Validation
         if (name === '' || email === '' || phone === '') {
             // Error Alert
-            ui.showAlert('Please fill in all fields', 'error');
+            ui.showAlert('Please fill i41n all fields', 'error');
         } else {
 
             // Add  contact to list
@@ -89,3 +95,19 @@ document.getElementById('contact-form').addEventListener('submit',
         }
         e.preventDefault();
     });
+
+
+// Delete Event Listener
+document.getElementById('contact-list').addEventListener('click', function (e) {
+    //  Instatiate UI 
+    const ui = new UI();
+
+    ui.deleteContact(e.target);
+
+    // Show Alert
+
+    ui.showAlert('Contact Deleted', 'success');
+
+
+    e.preventDefault;
+});
