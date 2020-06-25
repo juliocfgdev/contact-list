@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <title>Lista de Contatos</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Adicione Contato</h1>
+        <form action="" id="contact-form">
+            <div>
+                <label for="name">Nome</label>
+                <input class="u-full-width" type="text" id="name">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input class="u-full-width" type="email" id="email">
+            </div>
+            <div>
+                <label for="number">Numero</label>
+                <input class="u-full-width" type="number" id="number">
+            </div>
+            <div>
+                <input class="u-full-width" type="submit" value="Salvar">
+            </div>
+        </form>
+
+        <table class="u-full-width">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Número</th>
+                </tr>
+            </thead>
+            <tbody id="contact-list">
+            </tbody>
+        </table>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
