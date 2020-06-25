@@ -27,6 +27,29 @@ UI.prototype.addContactToList = function (contact) {
 
 };
 
+// Show Alert
+UI.prototype.showAlert = function (message, className) {
+    // create div
+    const div = document.createElement('div');
+
+    // add clasees
+    div.className = `alert ${className}`;
+    // add text
+    div.appendChild(document.createTextNode(message));
+
+    // get parent
+    const container = document.querySelector('.container');
+    const form = document.querySelector('#contact-form');
+
+    // insert alert
+    container.insertBefore(div, form);
+
+    // disappear after 2 secs
+    setTimeout(function () {
+        document.querySelector('.alert').remove();
+    }, 2000);
+};
+
 // Clear Fields
 UI.prototype.clearFields = function () {
     document.getElementById('name').value = '';
@@ -48,11 +71,21 @@ document.getElementById('contact-form').addEventListener('submit',
         //  Instatiate UI 
         const ui = new UI();
 
-        // Add  contact to list
-        ui.addContactToList(contact);
+        // Validation
+        if (name === '' || email === '' || phone === '') {
+            // Error Alert
+            ui.showAlert('Please fill in all fields', 'error');
+        } else {
 
-        // clear fields
-        ui.clearFields();
+            // Add  contact to list
+            ui.addContactToList(contact);
 
+            // Show success
+            ui.showAlert('Contact Added!', 'success');
+
+
+            // clear fields
+            ui.clearFields();
+        }
         e.preventDefault();
     });
