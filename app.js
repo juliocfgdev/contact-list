@@ -102,6 +102,8 @@ document.getElementById('contact-list').addEventListener('click', function (e) {
     //  Instatiate UI 
     const ui = new UI();
 
+    console.log(ui);
+
     ui.deleteContact(e.target);
 
     // Show Alert
