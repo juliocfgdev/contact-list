@@ -59,6 +59,52 @@ class UI {
     }
 }
 
+// Local Storage Class
+class Store {
+    static getContact() {
+        let contacts;
+        if (localStorage.getItem('contacts') === null) {
+            contacts = [];
+        } else {
+            contacts = JSON.parse(localStorage.getItem('contacts'));
+        }
+
+        return contacts;
+    }
+
+    static displayContacts() {
+        const contacts = Store.getContact();
+
+        contacts.forEach(function (contact) {
+            const ui = new UI;
+
+            //    add to UI
+            ui.addContactToList(contact);
+        });
+
+    }
+
+    static addContact(contact) {
+        const contacts = Store.getContact();
+        contacts.push(contact);
+        localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+
+    static removeContact(phone) {
+        const contacts = Store.getContact();
+        contacts.forEach(function (contact, index) {
+            if (contact.phone === phone) {
+                contacts.splice(index, 1);
+            }
+        });
+
+        localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+}
+
+// DOM Load Event
+document.addEventListener('DOMContentLoaded', Store.displayContacts);
+
 // Event Listeners
 document.getElementById('contact-form').addEventListener('submit',
     function (e) {
@@ -82,6 +128,9 @@ document.getElementById('contact-form').addEventListener('submit',
             // Add  contact to list
             ui.addContactToList(contact);
 
+            // Add to local storage
+            Store.addContact(contact);
+
             // Show success
             ui.showAlert('Contact Added!', 'success');
 
@@ -98,7 +147,11 @@ document.getElementById('contact-list').addEventListener('click', function (e) {
     //  Instatiate UI 
     const ui = new UI();
 
+    //  Delete from UI
     ui.deleteContact(e.target);
+
+    // Remove from local storage
+    Store.removeContact(e.target.parentElement.previousElementSibling.textContent);
 
     // Show Alert
 
