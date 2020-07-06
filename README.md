@@ -1,7 +1,12 @@
 # contact-list
-
-Live Version: https://juliocfgdev.github.io/contact-list/
-
-Contact list app, made to train OOP on JS using the syntax from ES5 and ES6 (both are in the source code)
-
-Technologies used: HTML, Skeleton CSS, CSS3, Vanilla JS with ES6.
+## Descrição
+Aplicação de lista de contatos feita para treinar programação orientada à objeto usando sintáxe tanto do ES5 quanto do ES6
+### Tecnologias Usadas:
+* HTML5
+* CSS3 + Skeleton CSS
+* Vannila JS + ES6:
+  * Arrow Functions
+  * OOP sem classes
+  * OOP com Classes
+* GitHub API
+#### Live Version: https://juliocfgdev.github.io/contact-list/
